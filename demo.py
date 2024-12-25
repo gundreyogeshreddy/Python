@@ -12,4 +12,4 @@ response = client.create_bucket(
 )
 
 print(f"Bucket {response['Location']} created successfully!")
-)
+
