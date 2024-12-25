@@ -1,10 +1,10 @@
 import boto3
 
 # Initialize the S3 client
-client = boto3.client('s3', region_name='ap-south-1')  # Replace 'your-region' with the region where the bucket is located
+client = boto3.client('s3', region_name='ap-south-1') 
 
 # Specify the bucket name
-bucket_name = 'newpb3bkt'  # Your actual bucket name
+bucket_name = 'newpb3bkt' 
 
 # Delete the bucket
 def delete_empty_bucket(bucket_name):
