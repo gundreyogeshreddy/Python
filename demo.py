@@ -1,15 +1,19 @@
 import boto3
 
-# Create an S3 client
-client = boto3.client('s3', region_name='ap-south-1')  # Replace 'your-region' with your desired AWS region, e.g., 'us-west-2'
+# Initialize the S3 client
+client = boto3.client('s3', region_name='ap-south-1')  # Replace 'your-region' with the region where the bucket was created
 
-# Create the S3 bucket
-response = client.create_bucket(
-    Bucket='newpb3bkt',  # Replace 'your-bucket-name' with your desired bucket name
-    CreateBucketConfiguration={
-        'LocationConstraint': 'ap-south-1'  # Replace 'your-region' with the same region as above, e.g., 'us-west-2'
-    }
-)
+# Specify the bucket name
+bucket_name = 'newpb3bkt',  # Replace 'your-bucket-name' with the name of your bucket
 
-print(f"Bucket {response['Location']} created successfully!")
+# Delete the bucket
+def delete_empty_bucket(newpb3bkt):
+    try:
+        client.delete_bucket(newpb3bkt)
+        print(f"Bucket '{newpb3bkt}' deleted successfully!")
+    except Exception as e:
+        print(f"Error deleting bucket: {e}")
+
+# Call the function to delete the bucket
+delete_empty_bucket(newpb3bkt)
 
